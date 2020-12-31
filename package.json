@@ -1,80 +1,97 @@
 {
-    "name": "folder-source-actions",
-    "private": true,
-    "displayName": "Folder source actions",
-    "description": "Apply organize imports and fix all to all files in a folder",
-    "version": "0.2.0",
-    "publisher": "bierner",
-    "engines": {
-        "vscode": "^1.32.0"
-    },
-    "repository": {
-        "url": "https://github.com/mjbvz/vscode-folder-source-actions.git",
-        "type": "git"
-    },
-    "bugs": {
-        "url": "https://github.com/mjbvz/vscode-folder-source-actions/issues"
-    },
-    "keywords": [
-        "imports",
-        "organize",
-        "sort",
-        "javascript",
-        "typescript"
+  "name": "smart-source-actions",
+  "private": true,
+  "displayName": "Folder source actions",
+  "description": "Apply source actions in a smart way like",
+  "version": "0.2.0",
+  "publisher": "Sohibe",
+  "engines": {
+    "vscode": "^1.52.0"
+  },
+  "repository": {
+    "url": "https://github.com/sohibegit/vscode-folder-source-actions.git",
+    "type": "git"
+  },
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "bugs": {
+    "url": "https://github.com/sohibegit/vscode-folder-source-actions/issues"
+  },
+  "keywords": [
+    "imports",
+    "organize",
+    "sort",
+    "javascript",
+    "typescript"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "folderSourceActions.organizeImportsOnlyChanges",
+        "title": "Organize Imports Only changed",
+        "icon": "$(selection)"
+      },
+      {
+        "command": "folderSourceActions.organizeImports",
+        "title": "Organize Imports in Folder"
+      },
+      {
+        "command": "folderSourceActions.fixAll",
+        "title": "Fix All in Folder"
+      }
     ],
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "onCommand:folderSourceActions.organizeImports",
-        "onCommand:folderSourceActions.fixAll"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "folderSourceActions.organizeImports",
-                "title": "Organize Imports in Folder"
-            },
-            {
-                "command": "folderSourceActions.fixAll",
-                "title": "Fix All in Folder"
-            }
-        ],
-        "menus": {
-            "explorer/context": [
-                {
-                    "command": "folderSourceActions.organizeImports",
-                    "when": "explorerResourceIsFolder"
-                },
-                {
-                    "command": "folderSourceActions.fixAll",
-                    "when": "explorerResourceIsFolder"
-                }
-            ],
-            "commandPalette": [
-                {
-                    "command": "folderSourceActions.organizeImports",
-                    "when": "false"
-                },
-                {
-                    "command": "folderSourceActions.fixAll",
-                    "when": "false"
-                }
-            ]
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "folderSourceActions.organizeImports",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "folderSourceActions.fixAll",
+          "when": "explorerResourceIsFolder"
         }
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "typescript": "^3.3.3",
-        "vscode": "^1.1.29",
-        "tslint": "^5.12.1",
-        "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+      ],
+      "scm/title": [
+        {
+          "command": "folderSourceActions.organizeImportsOnlyChanges",
+          "group": "navigation@-1",
+          "when": "true"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "folderSourceActions.organizeImportsOnlyChanges",
+          "when": "true"
+        },
+        {
+          "command": "folderSourceActions.organizeImports",
+          "when": "false"
+        },
+        {
+          "command": "folderSourceActions.fixAll",
+          "when": "false"
+        }
+      ]
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^7.0.43",
+    "@types/vscode": "^1.52.0",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
+  }
 }
